@@ -1,56 +1,82 @@
-#+author: conao3
+#+title: conao3-json-ts-mode
+#+author: Naoya Yamashita
 
-* Table of Contents
-- [[#description][Description]]
-- [[#install][Install]]
-- [[#usage][Usage]]
-- [[#customize][Customize]]
-- [[#information][Information]]
-  - [[#community][Community]]
-  - [[#contribution][Contribution]]
-  - [[#migration][Migration]]
-  - [[#license][License]]
-  - [[#author][Author]]
+A tree-sitter-based major mode for JSON files in Emacs.
 
-* Description
-Conao3 json tree-sitter major-mode.
+* Overview
 
-* Install
-Sample install code using [[https://github.com/conao3/leaf.el][leaf.el]].
+=conao3-json-ts-mode= provides syntax highlighting, indentation, and imenu support for JSON files using Emacs 29's built-in tree-sitter integration. It uses a custom tree-sitter grammar to parse JSON files.
+
+* Requirements
+
+- Emacs 29.1 or later (with tree-sitter support)
+
+* Installation
+
+** Using leaf.el
 
 #+begin_src emacs-lisp
 (leaf conao3-json-ts-mode :ensure t)
 #+end_src
 
+** Using use-package
+
+#+begin_src emacs-lisp
+(use-package conao3-json-ts-mode
+  :ensure t)
+#+end_src
+
+** Manual Installation
+
+Clone this repository and add it to your =load-path=:
+
+#+begin_src emacs-lisp
+(add-to-list 'load-path "/path/to/conao3-json-ts-mode")
+(require 'conao3-json-ts-mode)
+#+end_src
+
 * Usage
 
-* Customize
+To open a JSON file with this mode, run =M-x conao3-json-ts-mode=.
 
-* Information
-** Contribution
-We welcome PR!
+To automatically use this mode for all JSON files, enable the global minor mode:
 
-*** Require tools for testing
-- keg
+#+begin_src emacs-lisp
+(conao3-json-ts-mode-mode 1)
+#+end_src
+
+The tree-sitter grammar will be installed automatically on first use if it is not already available.
+
+* Features
+
+- Syntax highlighting for strings, numbers, booleans, and null values
+- Automatic indentation with 2-space offset
+- Imenu support for navigating objects and arrays
+
+* Contributing
+
+Contributions are welcome. Please feel free to submit issues and pull requests.
+
+** Development Setup
+
+Install keg for running tests:
+
 #+begin_src shell
 cd ~/
 gh repo clone conao3/keg .keg
 export PATH="$HOME/.keg/bin:$PATH"
 #+end_src
 
-*** Running test
+** Running Tests
+
 #+begin_src shell
 make test
 #+end_src
 
-** Migration
+* License
 
-** License
-#+begin_example
-General Public License Version 3 (GPLv3)
-Copyright (c) Naoya Yamashita - https://conao3.com
-https://github.com/conao3/eglot-lsp-settings.el/blob/master/LICENSE
-#+end_example
+This project is licensed under the GNU General Public License v3.0. See the [[file:LICENSE][LICENSE]] file for details.
 
-** Author
-- Naoya Yamashita ([[https://github.com/conao3][conao3]])
+* Author
+
+Naoya Yamashita ([[https://github.com/conao3][conao3]])
